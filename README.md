@@ -6,23 +6,33 @@ https://www.datafountain.cn/competitions/310
 
 Final Rank: 19/1701
 
-### Aspect Classification & Sentiment Classification
+### Two Stage Classification Task: Aspect Classification & Sentiment Classification
+Predict Aspect->Aspect-based Sentiment Classification
 
-#### 1. Aspect Classification
-#### 1.1 10-Classes
+#### Aspect Classification
+#### 1. 10-Classes
 Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全性), Appearance(外观), Control(操控), Oil consumption(油耗), Space(空间), Comfort(舒适性)
-#### 1.2 Data Distribution
+#### 2 Data Distribution
 | Power | Price | Interior | Configure | Safety | Appearance | Control | Oil consumption | Space | Comfort |
 | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
 | 3454 | 1634 | 669 | 1075 | 736 | 606 | 1302 | 1379 | 535 | 1182 |
 
-#### 2. Sentiment Classification
-#### 2.1 3-Classes
+#### Sentiment Classification
+#### 1. 3-Classes
 Positive, Neutral, Negative
-#### 2.2 Data Distribution
+#### 2. Data Distribution
 | Positive | Neutral | Negative |
 | :----: | :----: | :----: |
 | 2048 | 8488 | 2036 |
+
+## Method
+
+### Embedding & External Corpus
+
+
+### Aspect Classification
+
+### Sentiment Classification
 
 ## Reference
 1. Shuai Wang, Sahisnu Mazumder, Bing Liu, Mianwei Zhou‡, Yi Chang. 2018. Target-Sensitive Memory Networks for Aspect Sentiment Classification. In *Proceedings of ACL*.
