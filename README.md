@@ -17,10 +17,7 @@ Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全
 | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
 | 3454 | 1634 | 669 | 1075 | 736 | 606 | 1302 | 1379 | 535 | 1182 |
 
-#### Sentiment Classification
-#### 1. 3-Classes
-Positive, Neutral, Negative
-#### 2. Data Distribution
+#### Sentiment Classification Data Distribution
 | Positive | Neutral | Negative |
 | :----: | :----: | :----: |
 | 2048 | 8488 | 2036 |
