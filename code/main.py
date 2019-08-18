@@ -128,132 +128,132 @@ def main(args, train, test, device, n_splits=5, thes=0.5):
 	word_nn_params = (300, 150, 300, None, char_vocab_size, device, 1, 10, True, word_embedding, pos_vocab_size)
 	kf = KFold(n_splits=n_splits, shuffle=True, random_state=args.seed)
 	names = ['AspectNet', 'SequenceAspectNet', 'RethinkSequenceNet']
-	# names = ['SequenceAspectNet']
-	# for et in ['word2vec', 'glove', 'fasttext']:
-	# 	set_seed(args)
-	# 	word_embedding = embedding[et]['word_embedding']
-	# 	word_pinyin_embedding = embedding[et]['word_pinyin_embedding']
-	# 	char_nn_params = [300, 150, 300, None, char_vocab_size, device, 1]
-	# 	pinyin_nn_params = (300, 150, 300, None, char_vocab_size, device, 1)
-	# 	word_nn_params = (300, 150, 300, None, char_vocab_size, device, 1, 10, True, word_embedding, pos_vocab_size)
-	# 	kf = KFold(n_splits=n_splits, shuffle=True, random_state=args.seed)
-	# 	for i, (train_index, val_index) in enumerate(kf.split(train)):
-	# 		x_train, x_val = train.iloc[train_index], train.iloc[val_index]
-	# 		train_aspect_data = AspectData(
-	# 			x_train, padding_value=padding_value, pos_padding_value=pos_padding_value, 
-	# 			char_padding_value=char_padding_value, word_pinyin_padding_value=word_pinyin_padding_value,
-	# 			char_pinyin_padding_value=char_pinyin_padding_value)
-	# 		val_aspect_data = AspectData(
-	# 			x_val, padding_value=padding_value, pos_padding_value=pos_padding_value, 
-	# 			char_padding_value=char_padding_value, word_pinyin_padding_value=word_pinyin_padding_value,
-	# 			char_pinyin_padding_value=char_pinyin_padding_value)
-	# 		train_aspect_loader = DataLoader(
-	# 			train_aspect_data, batch_size=args.batch_size, drop_last=True, shuffle=True)
-	# 		val_aspect_loader = DataLoader(
-	# 			val_aspect_data, batch_size=args.batch_size, shuffle=False)
-	# 		aspect_net = AspectNet(300, [150, 150], 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
-	# 		seq_aspect_net = SequenceAspectNet(300, [150, 150], 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
-	# 		rethink_aspect_net = RethinkAspectNet(300, [150, 150], 10, 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
-	# 		aspect_models = {
-	# 			'AspectNet' : aspect_net, 
-	# 			'SequenceAspectNet' : seq_aspect_net, 
-	# 			'RethinkSequenceNet' : rethink_aspect_net
-	# 		}
-	# 		for model_name in names:
-	# 			model_path = '../../model/aspect_model_2nd/' + et + '_' + \
-	# 			model_name + '_' + str(i) + '3embedding'
-	# 			model = aspect_models[model_name]
-	# 			optimizer = None
-	# 			# optimizer = optim.Adam(model.parameters(), weight_decay=1e-4)
-	# 			# optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=1e-6)
-	# 			result, pred = train_aspect(
-	# 				args, model, model_name, optimizer, train_aspect_loader, 
-	# 				val_aspect_loader, device, model_path, i, thes)
-	# 			mirco_fs = result[0][-1]
-	# 			marco_fs = result[1][-1]
-	# 			mAP = result[-1]
-	# 			model_fs[model_name] += mirco_fs / n_splits
-	# 			print('Model %s\t Fold %d\t Mirco F1 %0.4f\t Marco F1 %0.4f\t mAP %0.4f' % (model_name, i, mirco_fs, marco_fs, mAP))
-	# 			print('Next Model----------------------')
-	# 			torch.cuda.empty_cache()
-	# 			# return
-	# 		print('Next Fold----------------------')
-	# 	torch.cuda.empty_cache()
-	# 	for model_name in model_fs:
-	# 		print('Embedding %s Model %s\t Avg Mirco F1 %0.4f' % (et, model_name, model_fs[model_name]))
-	# exit(0)
+	names = ['SequenceAspectNet']
+	for et in ['word2vec', 'glove', 'fasttext']:
+		set_seed(args)
+		word_embedding = embedding[et]['word_embedding']
+		word_pinyin_embedding = embedding[et]['word_pinyin_embedding']
+		char_nn_params = [300, 150, 300, None, char_vocab_size, device, 1]
+		pinyin_nn_params = (300, 150, 300, None, char_vocab_size, device, 1)
+		word_nn_params = (300, 150, 300, None, char_vocab_size, device, 1, 10, True, word_embedding, pos_vocab_size)
+		kf = KFold(n_splits=n_splits, shuffle=True, random_state=args.seed)
+		for i, (train_index, val_index) in enumerate(kf.split(train)):
+			x_train, x_val = train.iloc[train_index], train.iloc[val_index]
+			train_aspect_data = AspectData(
+				x_train, padding_value=padding_value, pos_padding_value=pos_padding_value, 
+				char_padding_value=char_padding_value, word_pinyin_padding_value=word_pinyin_padding_value,
+				char_pinyin_padding_value=char_pinyin_padding_value)
+			val_aspect_data = AspectData(
+				x_val, padding_value=padding_value, pos_padding_value=pos_padding_value, 
+				char_padding_value=char_padding_value, word_pinyin_padding_value=word_pinyin_padding_value,
+				char_pinyin_padding_value=char_pinyin_padding_value)
+			train_aspect_loader = DataLoader(
+				train_aspect_data, batch_size=args.batch_size, drop_last=True, shuffle=True)
+			val_aspect_loader = DataLoader(
+				val_aspect_data, batch_size=args.batch_size, shuffle=False)
+			aspect_net = AspectNet(300, [150, 150], 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
+			seq_aspect_net = SequenceAspectNet(300, [150, 150], 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
+			rethink_aspect_net = RethinkAspectNet(300, [150, 150], 10, 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
+			aspect_models = {
+				'AspectNet' : aspect_net, 
+				'SequenceAspectNet' : seq_aspect_net, 
+				'RethinkSequenceNet' : rethink_aspect_net
+			}
+			for model_name in names:
+				model_path = '../../model/aspect_model_2nd/' + et + '_' + \
+				model_name + '_' + str(i) + '3embedding'
+				model = aspect_models[model_name]
+				optimizer = None
+				# optimizer = optim.Adam(model.parameters(), weight_decay=1e-4)
+				# optimizer = optim.SGD(model.parameters(), lr=0.1, momentum=0.9, weight_decay=1e-6)
+				result, pred = train_aspect(
+					args, model, model_name, optimizer, train_aspect_loader, 
+					val_aspect_loader, device, model_path, i, thes)
+				mirco_fs = result[0][-1]
+				marco_fs = result[1][-1]
+				mAP = result[-1]
+				model_fs[model_name] += mirco_fs / n_splits
+				print('Model %s\t Fold %d\t Mirco F1 %0.4f\t Marco F1 %0.4f\t mAP %0.4f' % (model_name, i, mirco_fs, marco_fs, mAP))
+				print('Next Model----------------------')
+				torch.cuda.empty_cache()
+				# return
+			print('Next Fold----------------------')
+		torch.cuda.empty_cache()
+		for model_name in model_fs:
+			print('Embedding %s Model %s\t Avg Mirco F1 %0.4f' % (et, model_name, model_fs[model_name]))
+	exit(0)
 	
-	# n_splits_val_pred = []
-	# n_splits_val_prob = []
-	# n_splits_val_label = []
-	# fold_test_pred = 0.0
-	# for i, (train_index, val_index) in enumerate(kf.split(train)):
-	# 	aspect_net = AspectNet(300, [150, 150], 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
-	# 	seq_aspect_net = SequenceAspectNet(300, [150, 150], 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
-	# 	rethink_aspect_net = RethinkAspectNet(300, [150, 150], 10, 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
-	# 	aspect_models = {
-	# 		'AspectNet' : aspect_net, 
-	# 		'SequenceAspectNet' : seq_aspect_net, 
-	# 		'RethinkSequenceNet' : rethink_aspect_net
-	# 	}
-	# 	x_val = train.iloc[val_index]
-	# 	val_aspect_data = AspectData(x_val, padding_value=padding_value, pos_padding_value=pos_padding_value, char_padding_value=char_padding_value)
-	# 	val_aspect_loader = DataLoader(
-	# 		val_aspect_data, batch_size=args.batch_size, shuffle=False)
-	# 		# , num_workers=4, worker_init_fn=_init_fn)
-	# 	test_aspect_data = AspectData(test, padding_value=padding_value, pos_padding_value=pos_padding_value, char_padding_value=char_padding_value)
-	# 	test_aspect_loader = DataLoader(
-	# 		test_aspect_data, batch_size=args.batch_size, shuffle=False)
-	# 		# , num_workers=4, worker_init_fn=_init_fn)
-	# 	fold_val_pred = 0.0
-	# 	for model_name in names:
-	# 		ets = ['word2vec', 'glove', 'fasttext']
-	# 		for et in ets:
-	# 			print(i, et, model_name)
-	# 			# model_path = '../../model/aspect_model_with_punc_pos_word_char_pinyin/other7_' + model_name + '_' + str(i) + '.model_remove_low_fre_3' 
-	# 			# model_path = '../../model/aspect_new_embedding_remove_stopword/remove_stopword_' + model_name + '_' + str(i) + '.model_remove_low_fre_3_5fold'
-	# 			# model_path = '../../model/aspect_model_2nd/' + et + \
-	#    #                          model_name + '_' + str(i)
-	# 			model_path = '../../model/aspect_model_2nd/' + et + '_' + \
-	# 			model_name + '_' + str(i) + '3embedding'
-	# 			model = aspect_models[model_name]
-	# 			state_dict = torch.load(model_path)
-	# 			model.load_state_dict(state_dict)
-	# 			del state_dict
-	# 			gc.collect()
-	# 			torch.cuda.empty_cache()
-	# 			final_val_pred, final_val_label = eval_aspect(args, model, model_name, val_aspect_loader, device, 'test', i, thes)
-	# 			final_test_pred, _ = eval_aspect(args, model, model_name, test_aspect_loader, device, 'test', i, thes)
-	# 			fold_val_pred += final_val_pred / (len(aspect_models) * len(ets))
-	# 			fold_test_pred += final_test_pred / (len(aspect_models) * n_splits * len(ets))
-	# 	n_splits_val_prob.append(fold_val_pred)
-	# 	n_splits_val_label.append(final_val_label)
-	# 	del aspect_net, seq_aspect_net, rethink_aspect_net, val_aspect_data, test_aspect_data
-	# 	gc.collect()
-	# 	torch.cuda.empty_cache()
-	# all_fold_prob = np.concatenate(n_splits_val_prob, axis=0)
-	# all_fold_label = np.concatenate(n_splits_val_label, axis=0)
-	# optim_thes = find_optimal_thes(all_fold_prob, all_fold_label)
-	# print('Optimal Thes', optim_thes)
-	# for i in range(n_splits):
-	# 	fold_val_pred = n_splits_val_prob[i]
-	# 	thes = np.zeros(fold_val_pred.shape)
-	# 	for j, t in enumerate(optim_thes):
-	# 		thes[:, j] = t
-	# 	fold_val_pred_aspect = (fold_val_pred > thes) * 1
-	# 	fold_val_pred_aspect = check_zero(fold_val_pred_aspect, fold_val_pred)
-	# 	n_splits_val_pred.append(fold_val_pred_aspect)
-	# test_thes = np.zeros(fold_test_pred.shape)
-	# for j, t in enumerate(optim_thes):
-	# 	test_thes[:, j] = t
-	# test_pred_aspect = (fold_test_pred > test_thes) * 1
-	# check_zero(test_pred_aspect, fold_test_pred)
-	# torch.cuda.empty_cache()
+	n_splits_val_pred = []
+	n_splits_val_prob = []
+	n_splits_val_label = []
+	fold_test_pred = 0.0
+	for i, (train_index, val_index) in enumerate(kf.split(train)):
+		aspect_net = AspectNet(300, [150, 150], 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
+		seq_aspect_net = SequenceAspectNet(300, [150, 150], 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
+		rethink_aspect_net = RethinkAspectNet(300, [150, 150], 10, 10, word_embedding, word_pinyin_embedding, pos_vocab_size, char_nn_params, device).to(device)
+		aspect_models = {
+			'AspectNet' : aspect_net, 
+			'SequenceAspectNet' : seq_aspect_net, 
+			'RethinkSequenceNet' : rethink_aspect_net
+		}
+		x_val = train.iloc[val_index]
+		val_aspect_data = AspectData(x_val, padding_value=padding_value, pos_padding_value=pos_padding_value, char_padding_value=char_padding_value)
+		val_aspect_loader = DataLoader(
+			val_aspect_data, batch_size=args.batch_size, shuffle=False)
+			# , num_workers=4, worker_init_fn=_init_fn)
+		test_aspect_data = AspectData(test, padding_value=padding_value, pos_padding_value=pos_padding_value, char_padding_value=char_padding_value)
+		test_aspect_loader = DataLoader(
+			test_aspect_data, batch_size=args.batch_size, shuffle=False)
+			# , num_workers=4, worker_init_fn=_init_fn)
+		fold_val_pred = 0.0
+		for model_name in names:
+			ets = ['word2vec', 'glove', 'fasttext']
+			for et in ets:
+				print(i, et, model_name)
+				# model_path = '../../model/aspect_model_with_punc_pos_word_char_pinyin/other7_' + model_name + '_' + str(i) + '.model_remove_low_fre_3' 
+				# model_path = '../../model/aspect_new_embedding_remove_stopword/remove_stopword_' + model_name + '_' + str(i) + '.model_remove_low_fre_3_5fold'
+				# model_path = '../../model/aspect_model_2nd/' + et + \
+	   #                          model_name + '_' + str(i)
+				model_path = '../../model/aspect_model_2nd/' + et + '_' + \
+				model_name + '_' + str(i) + '3embedding'
+				model = aspect_models[model_name]
+				state_dict = torch.load(model_path)
+				model.load_state_dict(state_dict)
+				del state_dict
+				gc.collect()
+				torch.cuda.empty_cache()
+				final_val_pred, final_val_label = eval_aspect(args, model, model_name, val_aspect_loader, device, 'test', i, thes)
+				final_test_pred, _ = eval_aspect(args, model, model_name, test_aspect_loader, device, 'test', i, thes)
+				fold_val_pred += final_val_pred / (len(aspect_models) * len(ets))
+				fold_test_pred += final_test_pred / (len(aspect_models) * n_splits * len(ets))
+		n_splits_val_prob.append(fold_val_pred)
+		n_splits_val_label.append(final_val_label)
+		del aspect_net, seq_aspect_net, rethink_aspect_net, val_aspect_data, test_aspect_data
+		gc.collect()
+		torch.cuda.empty_cache()
+	all_fold_prob = np.concatenate(n_splits_val_prob, axis=0)
+	all_fold_label = np.concatenate(n_splits_val_label, axis=0)
+	optim_thes = find_optimal_thes(all_fold_prob, all_fold_label)
+	print('Optimal Thes', optim_thes)
+	for i in range(n_splits):
+		fold_val_pred = n_splits_val_prob[i]
+		thes = np.zeros(fold_val_pred.shape)
+		for j, t in enumerate(optim_thes):
+			thes[:, j] = t
+		fold_val_pred_aspect = (fold_val_pred > thes) * 1
+		fold_val_pred_aspect = check_zero(fold_val_pred_aspect, fold_val_pred)
+		n_splits_val_pred.append(fold_val_pred_aspect)
+	test_thes = np.zeros(fold_test_pred.shape)
+	for j, t in enumerate(optim_thes):
+		test_thes[:, j] = t
+	test_pred_aspect = (fold_test_pred > test_thes) * 1
+	check_zero(test_pred_aspect, fold_test_pred)
+	torch.cuda.empty_cache()
 
-	# np.save('../../tmp/2nd/test_3_embedding.tmp', test_pred_aspect)
-	# for i in range(n_splits):
-	# 	np.save('../../tmp/2nd/val_3_embedding' + str(i) + '.tmp', n_splits_val_pred[i])
-	# exit(0)
+	np.save('../../tmp/2nd/test_3_embedding.tmp', test_pred_aspect)
+	for i in range(n_splits):
+		np.save('../../tmp/2nd/val_3_embedding' + str(i) + '.tmp', n_splits_val_pred[i])
+	exit(0)
 
 	
 	# n_splits_val_pred = []
