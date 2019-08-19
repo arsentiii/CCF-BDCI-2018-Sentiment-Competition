@@ -21,9 +21,9 @@ Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全
 ### Two Stage Classification Task: Aspect Classification & Sentiment Classification
 Predict Aspect->Aspect-based Sentiment Classification. Since each review might mention several aspects, aspect classification is a multi-label classification task.
 
-Example:
->Chinese: 开过几个车，森是最费油的。
->English: I have driven several cars, and Forester is the **most gas-guzzling** car.
+#### Example:
+><br>Chinese: 开过几个车，森是最费油的。</br>
+><br>English: I have driven several cars, and Forester is the **most gas-guzzling** car.</br>
 >Included Aspect & Sentiment:  Oil consumption-Negative
 >Sentiment word: gas-guzzling (费油)
 
