@@ -14,9 +14,9 @@ Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全
 | 3454 | 1634 | 669 | 1075 | 736 | 606 | 1302 | 1379 | 535 | 1182 |
 
 #### 1.2 Sentiment Data Distribution
-| Positive | Neutral | Negative |
-| :----: | :----: | :----: |
-| 2048 | 8488 | 2036 |
+| Positive | Neutral | Negative | Total |
+| :----: | :----: | :----: | :----: |
+| 2048 | 8488 | 2036 | 12572 |
 
 #### 1.3 Two Stage Classification Task: Aspect Classification & Sentiment Classification
 Predict Aspect->Aspect-based Sentiment Classification. Since each review might mention several aspects, aspect classification is a multi-label classification task.
