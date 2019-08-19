@@ -18,7 +18,7 @@ Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全
 | :----: | :----: | :----: |
 | 2048 | 8488 | 2036 |
 
-### Two Stage Classification Task: Aspect Classification & Sentiment Classification
+#### 1.3 Two Stage Classification Task: Aspect Classification & Sentiment Classification
 Predict Aspect->Aspect-based Sentiment Classification. Since each review might mention several aspects, aspect classification is a multi-label classification task.
 
 #### Example:
