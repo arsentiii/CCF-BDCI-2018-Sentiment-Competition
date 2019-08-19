@@ -2,7 +2,7 @@
 
 ## Task Description
 Code for CCF BDCI 2018 Car Reviews Sentiment Competition (汽车行业用户观点主题及情感识别)
-https://www.datafountain.cn/competitions/310
+[Competition Details](https://www.datafountain.cn/competitions/310)
 
 Final Rank: 19/1701
 
@@ -10,9 +10,9 @@ Final Rank: 19/1701
 Predict Aspect->Aspect-based Sentiment Classification
 
 #### Aspect Classification
-#### 1. 10-Classes
+#### 10-Classes & Data Distribution
 Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全性), Appearance(外观), Control(操控), Oil consumption(油耗), Space(空间), Comfort(舒适性)
-#### 2 Data Distribution
+
 | Power | Price | Interior | Configure | Safety | Appearance | Control | Oil consumption | Space | Comfort |
 | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
 | 3454 | 1634 | 669 | 1075 | 736 | 606 | 1302 | 1379 | 535 | 1182 |
