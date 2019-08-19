@@ -22,10 +22,10 @@ Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全
 Predict Aspect->Aspect-based Sentiment Classification. Since each review might mention several aspects, aspect classification is a multi-label classification task.
 
 #### Example:
->Chinese: 开过几个车，森是最费油的。
->English: I have driven several cars, and Forester is the **most gas-guzzling** car.
->Included Aspect & Sentiment:  Oil consumption-Negative
->Sentiment word: gas-guzzling (费油)
+>>Chinese: 开过几个车，森(林人)是最费油的。
+>>English: I have driven several cars, and Forester is the **most gas-guzzling** car.
+>>Included Aspect & Sentiment:  Oil consumption-Negative
+>>Sentiment word: gas-guzzling (费油)
 
 ## 2. Method
 
