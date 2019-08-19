@@ -6,13 +6,6 @@ Code for CCF BDCI 2018 Car Reviews Sentiment Competition (汽车行业用户观�
 
 Final Rank: 19/1701
 
-### Two Stage Classification Task: Aspect Classification & Sentiment Classification
-Predict Aspect->Aspect-based Sentiment Classification
-
-Example:
->Chinese: 
->English:
-
 #### 1.1 Aspect 10-Classes & Data Distribution
 Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全性), Appearance(外观), Control(操控), Oil consumption(油耗), Space(空间), Comfort(舒适性)
 
@@ -25,6 +18,17 @@ Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全
 | :----: | :----: | :----: |
 | 2048 | 8488 | 2036 |
 
+### Two Stage Classification Task: Aspect Classification & Sentiment Classification
+Predict Aspect->Aspect-based Sentiment Classification. Since each review might mention several aspects, aspect classification is a multi-label classification task.
+
+Example:
+>Chinese: 开过几个车，森是最费油的。
+
+>English: I have driven several cars, and Forester is the **most gas-guzzling** car.
+
+>Included Aspect & Sentiment:  Oil consumption-Negative
+
+>Sentiment word: gas-guzzling (费油)
 
 ## 2. Method
 
