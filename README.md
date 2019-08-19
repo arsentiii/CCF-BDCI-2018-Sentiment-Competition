@@ -1,6 +1,6 @@
 # CCF-BDCI-2018-Car Reviews Sentiment Competition (汽车行业用户观点主题及情感识别)
 
-## Task Description
+## 1. Task Description
 Code for CCF BDCI 2018 Car Reviews Sentiment Competition (汽车行业用户观点主题及情感识别)
 [[Competition Details](https://www.datafountain.cn/competitions/310)]
 
@@ -9,26 +9,26 @@ Final Rank: 19/1701
 ### Two Stage Classification Task: Aspect Classification & Sentiment Classification
 Predict Aspect->Aspect-based Sentiment Classification
 
-#### Aspect Classification
-#### 10-Classes & Data Distribution
+#### 1.1 Aspect 10-Classes & Data Distribution
 Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全性), Appearance(外观), Control(操控), Oil consumption(油耗), Space(空间), Comfort(舒适性)
 
 | Power | Price | Interior | Configure | Safety | Appearance | Control | Oil consumption | Space | Comfort |
 | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: | :----: |
 | 3454 | 1634 | 669 | 1075 | 736 | 606 | 1302 | 1379 | 535 | 1182 |
 
-#### Sentiment Classification Data Distribution
+#### 1.2 Sentiment Data Distribution
 | Positive | Neutral | Negative |
 | :----: | :----: | :----: |
 | 2048 | 8488 | 2036 |
 
-## Method
+## 2. Method
 
-### Embedding & Corpus
+### 2.1 Embedding & Corpus
+We use the [LTP](http://www.ltp-cloud.com/) for word segmentation and [[word2vec](https://code.google.com/archive/p/word2vec/)] to train word embeddings. In order to reduce OOV, we collect car-related vocabulary from [Sogou Vocabulary](https://pinyin.sogou.com/dict/search/search_list/%C6%FB%B3%B5/upt-desc/). In addition, becuase this competition focuses on car reviews, we collect car-related  reviews from  as the corpus for embedding training.
 
-### Aspect Classification
+### 2.2 Aspect Classification
 
-### Sentiment Classification
+### 2.3 Sentiment Classification
 
 ## Reference
 1. Shuai Wang, Sahisnu Mazumder, Bing Liu, Mianwei Zhou‡, Yi Chang. 2018. Target-Sensitive Memory Networks for Aspect Sentiment Classification. In *Proceedings of ACL*.
