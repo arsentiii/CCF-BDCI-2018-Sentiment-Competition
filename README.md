@@ -25,7 +25,9 @@ Predict Aspect->Aspect-based Sentiment Classification. Since each review might m
 >Chinese: 开过几个车，森(林人)是最费油的。
 >
 >English: I have driven several cars, and Forester is the **most gas-guzzling** car.
+>
 >Included Aspect & Sentiment:  Oil consumption-Negative
+>
 >Sentiment word: gas-guzzling (费油)
 
 ## 2. Method
