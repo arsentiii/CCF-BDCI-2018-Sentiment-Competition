@@ -9,6 +9,10 @@ Final Rank: 19/1701
 ### Two Stage Classification Task: Aspect Classification & Sentiment Classification
 Predict Aspect->Aspect-based Sentiment Classification
 
+Example:
+>Chinese: 
+>English:
+
 #### 1.1 Aspect 10-Classes & Data Distribution
 Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全性), Appearance(外观), Control(操控), Oil consumption(油耗), Space(空间), Comfort(舒适性)
 
@@ -20,6 +24,7 @@ Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全
 | Positive | Neutral | Negative |
 | :----: | :----: | :----: |
 | 2048 | 8488 | 2036 |
+
 
 ## 2. Method
 
