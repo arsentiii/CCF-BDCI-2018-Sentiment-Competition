@@ -24,8 +24,7 @@ Power(动力), Price(价格), Interior(内饰), Configure(配置), Safety(安全
 
 ## Method
 
-### Embedding & External Corpus
-
+### Embedding & Corpus
 
 ### Aspect Classification
 
