@@ -35,13 +35,16 @@ Predict Aspect->Aspect-based Sentiment Classification. Since each review might m
 ### 2.1 Embedding & Corpus
 We use the [LTP](http://www.ltp-cloud.com/) for word segmentation and [word2vec](https://code.google.com/archive/p/word2vec/) to train word embeddings. In order to reduce OOV, we collect car-related vocabulary from [Sogou Vocabulary](https://pinyin.sogou.com/dict/search/search_list/%C6%FB%B3%B5/upt-desc/). In addition, becuase this competition focuses on car reviews, we collect about 4,500,000 car-related reviews from [Tianya BBS (天涯论坛)](http://bbs.tianya.cn/list-cars-1.shtml) for embedding training.
 
+### 2.1 Hierarchical Sentence Encoder
+![avatar](images/(A)HUARN.png)
+
+<center>Figure 1: Word-based Sentence Encoder HUARN & AHUARN</center>
+
 ### 2.2 Aspect Classification
 We use three neural networks for Aspect Classification ([AspectNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/aspect_net.py), [RethinkNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/rethink_aspect_net.py), and [SequenceNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/sequence_aspect_net.py)). These neural networks consist of a specific aspect encoder.
 
 #### 2.2.1 Aspect Encoder
-![avatar](images/(A)HUARN.png)
 
-<center>Figure 1: Encoder HUARN & AHUARN</center>
 
 ### 2.3 Sentiment Classification
 
