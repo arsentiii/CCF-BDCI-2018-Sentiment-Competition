@@ -40,6 +40,8 @@ We use the [LTP](http://www.ltp-cloud.com/) for word segmentation and [word2vec]
 
 <center>Figure 1: Word-based Sentence Encoder HUARN & AHUARN</center>
 
+<center>aaaa</center>
+
 ### 2.2 Aspect Classification
 We use three neural networks for Aspect Classification ([AspectNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/aspect_net.py), [RethinkNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/rethink_aspect_net.py), and [SequenceNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/sequence_aspect_net.py)). These neural networks consist of a specific aspect encoder.
 
