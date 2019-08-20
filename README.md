@@ -1,4 +1,4 @@
-# CCF-BDCI-2018-Car Reviews Sentiment Competition (汽车行业用户观点主题及情感识别)
+# System Description of CCF-BDCI-2018-Car Reviews Sentiment Competition (汽车行业用户观点主题及情感识别)
 
 ## 1. Task Description
 Code for CCF BDCI 2018 Car Reviews Sentiment Competition (汽车行业用户观点主题及情感识别)
@@ -38,22 +38,46 @@ We use the [LTP](http://www.ltp-cloud.com/) for word segmentation and [word2vec]
 ### 2.1 Sentence Encoder
 
 #### 2.1.1 Hierarchical Word-/Char-/Pinyin-based Sentence Encoder
-![avatar](images/(A)HUARN.png)
 
-<center>Figure 1: Word-based Sentence Encoder HUARN & AHUARN</center>
+In this system, we use three kinds of inputs for this hierarchical encoder, and they are word-input, char-input and pinyin-input which could partly reduce the effect of misspelling and introduce generalization. Because a single clause can express enough information for a aspect and its sentiment, we first use a GRU encoder to extract word-/char-/pinyin-features, then an attention layer is used to extract clause features (GRU-Attention Layer). Finally, we can get a sequence of clause features for each kind of input, so the GRU-Attention Layer is used again to select important information.
+
+![avatar](images/(A)HUARN.png)
 
 #### 2.1.2 Word-/Char-based Sentence Encoder
 
-### 2.2 Aspect Classification
-We use three neural networks for Aspect Classification ([AspectNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/aspect_net.py), [RethinkNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/rethink_aspect_net.py), and [SequenceNet](https://github.com/HWJ-NLP/CCF-BDCI-2018-Sentiment-Competition/blob/master/code/model/sequence_aspect_net.py)). These neural networks consist of a specific aspect encoder.
+Besides hierarchical encoder, we also use simple sentence encoder to extract various features. 
 
-#### 2.2.1 Aspect Encoder
+* Word-Input (Figure 2)
+	* Aspect Classification (AC): we only use a simple LSTM-Attention Layer to extract features.
+	* Sentiment Classification (SC): besides the LSTM-Attention Layer used in AC, we also build a aspect-specific LSTM-Attention Layer to extract features.
+
+![avatar](images/WordNN.png)
+
+* Char-Input (Figure 3): we first use CNN to extract local char context features, then we use LSTM/GRU-Attention Layer to extract global features.
+
+![avatar](images/CharNN.png)
+
+#### 2.1.3 Multi-Features Encoder
+
+![avatar](images/Multi-FeatureEncoder.png)
+
+### 2.2 Aspect Classification
+In Aspect Classification, we use three neural networks for Aspect Classification ([AspectNet](code/model/aspect_net.py), [RethinkNet](code/model/rethink_aspect_net.py), and [SequenceNet](code/model/sequence_aspect_net.py)), which all use the same set of encoders (see 2.1). These neural networks consist of a specific aspect encoder.
+
+#### 2.2.1 AspectNet
+
+
+#### 2.2.2 RethinkNet
+#### 2.2.3 SequenceNet
 
 
 ### 2.3 Sentiment Classification
 
+## 3. Experiment
+
+
 ## Reference
-1. Shuai Wang, Sahisnu Mazumder, Bing Liu, Mianwei Zhou‡, Yi Chang. 2018. Target-Sensitive Memory Networks for Aspect Sentiment Classification. In *Proceedings of ACL*.
+1. Shuai Wang, Sahisnu Mazumder, Bing Liu, Mianwei Zhou, Yi Chang. 2018. Target-Sensitive Memory Networks for Aspect Sentiment Classification. In *Proceedings of ACL*.
 2. Wei Xue and Tao Li. 2018. Aspect Based Sentiment Analysis with Gated Convolutional Networks. In *Proceedings of ACL*.
 3. Ruidan He, Wee Sun Lee, Hwee Tou Ng, and Daniel Dahlmeier. 2018. Exploiting Document Knowledge for Aspect-level Sentiment Classification. In *Proceedings of ACL*.
 4. Qiao Qian, Minlie Huang, Jinhao Lei, Xiaoyan Zhu. 2017. Linguistically Regularized LSTM for Sentiment Classification. In *Proceedings of ACL*.
