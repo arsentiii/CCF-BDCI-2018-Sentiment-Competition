@@ -40,6 +40,7 @@ We use three neural networks for Aspect Classification ([AspectNet](https://gith
 
 #### 2.2.1 Aspect Encoder
 ![avatar](images/(A)HUARN.png)
+
 <center>Figure 1: Encoder HUARN & AHUARN</center>
 
 ### 2.3 Sentiment Classification
